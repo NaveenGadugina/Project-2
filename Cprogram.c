@@ -2,7 +2,36 @@
 #include<stdlib.h>
 #include<string.h>
 
+int main(){
+    printf("Welcome to the Linked List Operations Program!\n");
+    printf("Select the type of linked list you want to work with:\n");
+    printf("1. Singly Linked List\n");
+    printf("2. Doubly Linked List\n");
+    printf("3. Circular Singly Linked List\n");
+    printf("Select an option\n");
 
+    int opt;
+    scanf("%d", &opt);
+    switch(opt){
+        case 1:
+            // Call the function for singly linked list
+            printf("You selected Singly Linked List.\n");
+           sll();
+            break;
+        case 2:
+            // Call the function for doubly linked list
+            printf("You selected Doubly Linked List.\n");
+            dll();
+            break;
+        case 3:
+            // Call the function for circular singly linked list
+            printf("You selected Circular Singly Linked List.\n");
+            scll();
+            break;
+        default:
+            printf("Invalid option. Please select a valid option.\n");
+    }
+}
 
 //sll.c
 struct node
@@ -653,35 +682,4 @@ int scll()
         }
     }
     return 0;
-}
-
-nt main(){
-    printf("Welcome to the Linked List Operations Program!\n");
-    printf("Select the type of linked list you want to work with:\n");
-    printf("1. Singly Linked List\n");
-    printf("2. Doubly Linked List\n");
-    printf("3. Circular Singly Linked List\n");
-    printf("Select an option\n");
-
-    int opt;
-    scanf("%d", &opt);
-    switch(opt){
-        case 1:
-            // Call the function for singly linked list
-            printf("You selected Singly Linked List.\n");
-           sll();
-            break;
-        case 2:
-            // Call the function for doubly linked list
-            printf("You selected Doubly Linked List.\n");
-            dll();
-            break;
-        case 3:
-            // Call the function for circular singly linked list
-            printf("You selected Circular Singly Linked List.\n");
-            scll();
-            break;
-        default:
-            printf("Invalid option. Please select a valid option.\n");
-    }
 }
