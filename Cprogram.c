@@ -34,25 +34,26 @@ int main(){
 }
 
 //sll.c
-struct node
-{
+struct node {
     int data;
     struct node *next;
 };
 
-struct node *head;
+struct node *head = NULL; // Initialize head to NULL
 
 void printll();
 
-void ins_beg()
-{
+void ins_beg() {
     struct node *new_node = (struct node *)malloc(sizeof(struct node));
     if (new_node == NULL) {
         printf("Memory allocation failed!\n");
         exit(1);
     }
+    
     printf("Enter the data of the new node: \n");
+
     scanf("%d", &new_node->data);
+
     new_node->next = head;
     head = new_node;
 
@@ -85,30 +86,56 @@ void ins_aft()
     printll();
 }
 
-void ins_bef()
-{
+void ins_bef() {
     struct node *ptr, *preptr;
     int pos;
+
     struct node *new_node = (struct node *)malloc(sizeof(struct node));
     if (new_node == NULL) {
-        printf("Memory allocation failed!\n");
+         printf("Memory allocation failed!\n");
         exit(1);
     }
-    printf("Enter the data of the node before which the new node is to be inserted: \n");
+    printf("Enter the data of the node before which the new node is to be inserted: \n")
     scanf("%d", &pos);
-    printf("Enter the data of the newnode \n");
+
+    printf("Enter the data of the new node: ");
     scanf("%d", &new_node->data);
-    preptr = head;
-    ptr = preptr->next;
-    while (ptr->data != pos)
-    {
-        ptr = ptr->next;
-        preptr = preptr->next;
+
+    // Handle if list is empty
+    if (head == NULL) {
+        printf("List is empty. Cannot insert before.\n");
+        free(new_node);
+        return;
     }
-    new_node->next = preptr->next;
+
+    // Special case: insert before the first node
+    if (head->data == pos) {
+        new_node->next = head;
+        head = new_node;
+        printll();
+        return;
+    }
+
+    preptr = head;
+    ptr = head->next;
+
+    while (ptr != NULL && ptr->data != pos) {
+        preptr = ptr;
+        ptr = ptr->next;
+    }
+
+    if (ptr == NULL) {
+        printf("Node with data %d not found.\n", pos);
+        free(new_node);
+        return;
+    }
+
+    new_node->next = ptr;
     preptr->next = new_node;
+
     printll();
 }
+
 
 void ins_end()
 {
