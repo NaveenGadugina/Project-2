@@ -1,7 +1,10 @@
 include<stdio.h>
-int main(){
+int main()
+{
+	char name;
 	printf("Enter your Name");
 	scanf("%d"&Name);
+	`
 }
 
 
